@@ -1,0 +1,30 @@
+import re
+
+def simple_chatbot(user_input):
+    # Define some predefined patterns and responses
+    patterns_and_responses = {
+        r'hello|hi|hey|greetings': 'Hello! How can I assist you?😊',
+        r'how are you': 'I am just a computer program, but I am here to help you!',
+        r'what is your name': 'I am a simple chatbot.',
+        r'How old are you?': 'I am not sure how old you think I am, but I am actually a virtual friend for you!😄',
+        r'bye|goodbye': 'Goodbye! Have a great day! 👋'
+    }
+
+    # Loop through patterns and find a match
+    for pattern, response in patterns_and_responses.items():
+        if re.search(pattern, user_input, re.IGNORECASE):
+            return response
+
+    # If no pattern matches, provide a generic response
+    return "I'm not sure how to respond to that."
+
+# Main loop for chatting
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == 'exit':
+        print("Chatbot: Goodbye!")
+        break
+    response = simple_chatbot(user_input)
+    print("Chatbot:", response)
+
+
